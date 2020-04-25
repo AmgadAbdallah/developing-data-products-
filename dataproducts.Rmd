@@ -1,0 +1,35 @@
+---
+title: "data products"
+author: "Amgad Abdallah"
+date: "25/04/2020"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+
+## map to Giza Pyramids
+Create a leaflet map object.
+```{r cars}
+library(leaflet)
+map <- leaflet() %>% addTiles()
+```
+
+Create a marker with a picture of Benrath Palace and a link to its homepage.
+```{r}
+pyramidsIcon <- makeIcon(
+   iconUrl = "https://wonderfulengineering.com/wp-content/uploads/2016/01/eqypt-wallpaper-6.jpg",
+   iconWidth = 30*408/255, iconHeight = 30,
+   iconAnchorX = 30*408/255/2, iconAnchorY = 30/2
+)
+```
+
+Add the marker to the map and display the map.
+```{r}
+pyramids <- c("<a href= 'https://wonderfulengineering.com/wp-content/uploads/2016/01/eqypt-wallpaper-6.jpg' >Giza Pyramids<br><img src='https://wonderfulengineering.com/wp-content/uploads/2016/01/eqypt-wallpaper-6.jpg' width='210' height='132'  alt='Foto Corps de Logis' title='Foto Corps de Logi'></a>")
+map %>%
+   addTiles() %>%
+   addMarkers(lat=29.9773, lng=31.1325, popup = pyramids)
+```
